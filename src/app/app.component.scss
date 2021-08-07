@@ -1,0 +1,48 @@
+.form-container {
+  background: #fff;
+  box-shadow: 0 0 3px 0 rgb(0 0 0 / 25%);
+  margin: 2rem auto;
+  padding: 1rem;
+
+
+  .form-control {
+    &:focus {
+      border-color: #80C342;
+      box-shadow: none;
+    }
+
+    &.is-invalid {
+      background-image: none;
+    }
+  }
+
+  .calendar {
+    position: relative;
+    i{
+      position: absolute;
+      right: 20px;
+      top: 7px;
+    }
+  }
+}
+.btn {
+    margin-left:0.5rem;
+  &:focus {
+    box-shadow: none;
+  }
+
+  &.btn-primary {
+    background: #80C342;
+    color: #1b2225;
+    border: 1px solid #80C342;
+
+    &:hover {
+    }
+  }
+}
+
+@media (min-width: 1400px){
+  .form-container,.container {
+    max-width: 700px;
+  }
+}
