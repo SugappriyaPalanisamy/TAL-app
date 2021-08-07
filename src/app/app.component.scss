@@ -26,7 +26,8 @@
   }
 }
 .btn {
-    margin-left:0.5rem;
+  margin-left: 0.5rem;
+
   &:focus {
     box-shadow: none;
   }
@@ -37,6 +38,7 @@
     border: 1px solid #80C342;
 
     &:hover {
+      background: #c1e2a3
     }
   }
 }

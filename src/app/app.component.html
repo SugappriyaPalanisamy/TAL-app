@@ -25,7 +25,11 @@
     <div class="mb-3  row">
       <label  class="col-sm-3 col-md-3 col-form-label">Date of Birth</label>
       <div class="col-sm-9 col-md-9 col-12 calendar">
-        <input type="text" class="form-control" id="dob" placeholder="DD/MM/YYYY" name="dob" [(ngModel)]="premium.DoB"  [maxDate]="maxDate" [ngClass]="{ 'is-invalid': dob.errors && (dob.touched || submitted) }" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" autocomplete="off" (change)="calculateAge()" (dateSelect)="calculateAge()" #dob="ngModel" required>
+        <input type="text" class="form-control" id="dob" placeholder="DD/MM/YYYY" name="dob"
+               [(ngModel)]="premium.DoB"  [maxDate]="maxDate" [minDate]="{year: 1753, month:1, day: 1}"
+               [ngClass]="{ 'is-invalid': dob.errors && (dob.touched || submitted) }"
+               ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" autocomplete="off"
+               (change)="calculateAge()" (dateSelect)="calculateAge()" #dob="ngModel" required>
         <i class="bi bi-calendar-fill" (click)="d.toggle()" ></i>
         <div *ngIf="dob.invalid && (submitted || dob.dirty || dob.touched)" class="invalid-feedback " autocomplete="off" required>
           <span *ngIf="dob.errors?.required">Date of birth is required.</span>
@@ -38,7 +42,7 @@
     <div class="mb-3  row">
       <label class="col-sm-3 col-md-3 col-form-label">Age</label>
       <div class="col-sm-9 col-md-9 col-12">
-        <input type="text" readonly class="form-control" id="age" placeholder="Age" [(ngModel)]="premium.AgeText" name="age" autocomplete="off" #age="ngModel" required>
+        <input type="text" readonly class="form-control" id="age" placeholder="Age" [value]="premium.Age?.Year" name="age" autocomplete="off" >
       </div>
     </div>
 
@@ -57,12 +61,12 @@
 
     <!--Death-->
     <div class="mb-3  row">
-      <label  class="col-sm-3 col-md-3 col-form-label">Death</label>
+      <label  class="col-sm-3 col-md-3 col-form-label">Death ($) </label>
       <div class="col-sm-9 col-md-19 col-12">
-        <input type="text" pattern="^\d*(\.\d{0,2})?$" class="form-control" id="death" [(ngModel)]="premium.DeathCover" placeholder="Death Cover amount ($0.00)" name="deathCover" [ngClass]="{ 'is-invalid': deathCover.errors && (deathCover.touched || submitted) }" autocomplete="off" #deathCover = "ngModel" required>
+        <input type="text" pattern="^\d*(\.\d{0,2})?$" class="form-control" id="death" [(ngModel)]="premium.DeathCover"  placeholder="Death cover amount " name="deathCover" [ngClass]="{ 'is-invalid': deathCover.errors && (deathCover.touched || submitted) }" autocomplete="off" #deathCover = "ngModel" required>
         <div *ngIf="deathCover.invalid && (submitted || deathCover.dirty || deathCover.touched)" class="invalid-feedback ">
-          <span *ngIf="deathCover.errors?.required">Death Cover amount is required.</span>
-          <span *ngIf="!deathCover.errors.required && deathCover.dirty">Death Cover amount is in valid</span>
+          <span *ngIf="deathCover.errors?.required">Death cover amount is required.</span>
+          <span *ngIf="!deathCover.errors.required && deathCover.dirty">Death cover amount is in valid</span>
         </div>
       </div>
     </div>
@@ -70,10 +74,12 @@
     <div class="d-flex flex-row-reverse ">
       <button type="submit" class="btn btn-primary">Calculate</button>
       <button type="button" class="btn" (click)="reset()">Reset</button>
-
-      <span *ngIf="premium?.DeathPremiumAmount"> Premium amount ${{premium.DeathPremiumAmount}}</span>
     </div>
   </form>
 
 </div>
 
+<div class="container" *ngIf="premium?.DeathPremiumAmount != null">
+  <h4>Calculated monthly premium</h4>
+  <span> Your premium amount is <span class="fw-bold">{{premium.DeathPremiumAmount | currency}}</span></span>
+</div>

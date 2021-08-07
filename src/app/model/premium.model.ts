@@ -1,11 +1,9 @@
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Rating } from './occupation.model';
 
 export class PremiumModel {
   Name: number;
-  DoB: NgbDateStruct;
-  Age: number;
-  AgeText?:string
+  DoB: string;
+  Age: Age;
   Occupation: Rating;
   DeathCover: number;
   DeathPremiumAmount?: number;
@@ -18,4 +16,8 @@ export class PremiumModel {
     this.DeathCover = null;
     
   }
+}
+interface Age{
+  Year: number;
+  Month: number;
 }

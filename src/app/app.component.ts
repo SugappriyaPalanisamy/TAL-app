@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import * as moment from 'moment'
 import { OccupationList, IOccupation } from './model/occupation.model';
 import { PremiumModel } from './model/premium.model';
 
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
 
   title = 'TAL-app';
   maxDate: NgbDateStruct;
+
   public submitted: boolean;
   public occupationList: IOccupation[] = OccupationList;
 
@@ -34,24 +36,23 @@ export class AppComponent implements OnInit {
     if (this.form.controls["dob"].errors)
       return;
 
-    let today = new Date();
-    let age = today.getFullYear() - this.form.controls["dob"].value.year;
+    const birthDate = new Date(this.form.controls["dob"].value);
 
-    if (age == 0)
-      this.premium.AgeText = this.form.controls["dob"].value.month + ' Months';
+    let year = moment().diff(birthDate, 'years', false);
+    let month = moment().diff(birthDate, 'months', false);
 
-    else
-      this.premium.AgeText = age + ' Months';
-
-    this.premium.Age = age == 0 ? 1 : age;   
+    this.premium.Age = {
+      Year: year,
+      Month: month
+    }; 
   }
   calculate(): void {
     this.submitted = true;
     if (this.form.invalid)
       return;
-    else 
-      this.premium.DeathPremiumAmount = (this.premium.DeathCover * this.premium.Occupation * this.premium.Age) / 1000 * 12;
-    console.log(this.premium);
+    else
+      this.premium.DeathPremiumAmount = ((this.premium.DeathCover * this.premium.Occupation * this.premium.Age.Year) / 1000 * 12);
+    
   }
 
   reset() {

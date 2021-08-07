@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {  FormsModule} from '@angular/forms';
-import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDateParserFormatter, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { CustomDateFormatter } from './services/custom-date-formatter.service';
-
+import { CustomAdapter } from  './services/custom-date-adapter.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { CustomDateFormatter } from './services/custom-date-formatter.service';
     FormsModule
   ],
   providers: [
-    { provide: NgbDateParserFormatter, useClass: CustomDateFormatter }
+    { provide: NgbDateParserFormatter, useClass: CustomDateFormatter },
+    { provide: NgbDateAdapter, useClass: CustomAdapter }
   ],
   bootstrap: [AppComponent]
 })
