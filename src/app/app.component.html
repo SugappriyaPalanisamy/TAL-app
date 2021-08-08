@@ -51,7 +51,7 @@
       <label  class="col-sm-3 col-md-3 col-form-label">Occupation</label>
       <div class="col-sm-19 col-md-9 col-12">
         <select class="form-control" id="occupation" name="occupation" [(ngModel)]="premium.Occupation" [ngClass]="{ 'is-invalid': occupation.errors && (occupation.touched || submitted) }" autocomplete="off" #occupation="ngModel" required>
-          <option [value]="occupation.Rating" *ngFor="let occupation of occupationList">{{ occupation.Name }}</option>
+          <option [value]="occupation.Rating" [ngValue]="occupation" *ngFor="let occupation of occupationList">{{ occupation.Name }}</option>
         </select>
         <div *ngIf="occupation.invalid && (submitted || occupation.dirty || occupation.touched)" class="invalid-feedback">
           <span *ngIf="occupation.errors?.required"> Occupation is required.</span>

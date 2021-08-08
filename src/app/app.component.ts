@@ -12,7 +12,8 @@ import { PremiumModel } from './model/premium.model';
 })
 export class AppComponent implements OnInit {
 
-  title = 'TAL-app';
+  title = 'Monthly premium calcualtor';
+
   maxDate: NgbDateStruct;
 
   public submitted: boolean;
@@ -51,7 +52,7 @@ export class AppComponent implements OnInit {
     if (this.form.invalid)
       return;
     else
-      this.premium.DeathPremiumAmount = ((this.premium.DeathCover * this.premium.Occupation * this.premium.Age.Year) / 1000 * 12);
+      this.premium.DeathPremiumAmount = ((this.premium.DeathCover * this.premium.Occupation.Rating * this.premium.Age.Year) / 1000 * 12);
     
   }
 

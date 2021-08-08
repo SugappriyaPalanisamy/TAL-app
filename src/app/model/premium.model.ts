@@ -1,10 +1,10 @@
-import { Rating } from './occupation.model';
+import { IOccupation } from './occupation.model';
 
 export class PremiumModel {
   Name: number;
   DoB: string;
   Age: Age;
-  Occupation: Rating;
+  Occupation: IOccupation;
   DeathCover: number;
   DeathPremiumAmount?: number;
 
