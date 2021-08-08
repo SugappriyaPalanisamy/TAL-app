@@ -49,7 +49,7 @@
     <!--Occupation-->
     <div class="mb-3  row">
       <label  class="col-sm-3 col-md-3 col-form-label">Occupation</label>
-      <div class="col-sm-19 col-md-9 col-12">
+      <div class="col-sm-9 col-md-9 col-12">
         <select class="form-control" id="occupation" name="occupation" [(ngModel)]="premium.Occupation" [ngClass]="{ 'is-invalid': occupation.errors && (occupation.touched || submitted) }" autocomplete="off" #occupation="ngModel" required>
           <option [value]="occupation.Rating" [ngValue]="occupation" *ngFor="let occupation of occupationList">{{ occupation.Name }}</option>
         </select>
