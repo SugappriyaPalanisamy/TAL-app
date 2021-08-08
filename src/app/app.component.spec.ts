@@ -52,7 +52,7 @@ describe('AppComponent', () => {
     errors = name.errors || {};
     expect(errors['pattern']).toBeTruthy();
   });
-  it('Calculate premium amount if form is vaid', () => {
+  it('calculate premium amount if form is valid', () => {
     expect(component.form.valid).toBeFalsy();
     let premium: PremiumModel = component.premium;
     component.form.controls['name'].setValue('user');
