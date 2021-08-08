@@ -15,11 +15,11 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 Added 5  test cases for the app
-1. should create the app
-2. should have as title 'Monthly premium calcualtor
-3. form invalid when empty
-4. name field validity
-5. calculate premium amount if form is valid
+1. Should create the app
+2. Should have as title 'Monthly premium calcualtor
+3. Form invalid when empty
+4. Name field validity
+5. Calculate premium amount if form is valid
 
 ## Features
 
