@@ -62,7 +62,7 @@
     <!--Death-->
     <div class="mb-3  row">
       <label  class="col-sm-3 col-md-3 col-form-label">Death ($) </label>
-      <div class="col-sm-9 col-md-19 col-12">
+      <div class="col-sm-9 col-md-9 col-12">
         <input type="text" pattern="^\d*(\.\d{0,2})?$" class="form-control" id="death" [(ngModel)]="premium.DeathCover"  placeholder="Death cover amount " name="deathCover" [ngClass]="{ 'is-invalid': deathCover.errors && (deathCover.touched || submitted) }" autocomplete="off" #deathCover = "ngModel" required>
         <div *ngIf="deathCover.invalid && (submitted || deathCover.dirty || deathCover.touched)" class="invalid-feedback ">
           <span *ngIf="deathCover.errors?.required">Death cover amount is required.</span>
