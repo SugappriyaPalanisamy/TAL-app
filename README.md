@@ -2,12 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0, bootstrap v5.0, Typescript 4.3.5, HTML5 and SCSS 
 
+## Install
+ run `npm install` to install required dependencies
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Install
- run `npm install` to install required dependencies
 
 ## Build
 
